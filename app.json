@@ -30,8 +30,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "cee65d0b-203b-437e-8c72-af13662dd44c"
+        "projectId": "528b4326-32ac-4386-882d-d5911856693b"
       }
-    }
+    },
+    "owner": "ismaeldev"
   }
 }
