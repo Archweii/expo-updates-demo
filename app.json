@@ -3,6 +3,7 @@
     "name": "expo-updates-demo",
     "slug": "expo-updates-demo",
     "version": "1.0.0",
+    "scheme": "updates-demo",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
