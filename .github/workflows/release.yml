@@ -1,5 +1,8 @@
-
 # https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#release
+#
+# Creates an Expo Update with Expo branch named as the Git branch for clarity
+#
+#
 on:
   release:
     types: [published]
@@ -35,5 +38,4 @@ jobs:
       - name: 🚀 Create preview
         uses: expo/expo-github-action/preview@v8
         with:
-          # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#push
-          command: eas update --branch ${{ github.base_ref }} --message "${{ github.event.head_commit.message }}"
+          command: eas update --branch ${{ github.base_ref }} --message "${{ github.event.release.name }}"
