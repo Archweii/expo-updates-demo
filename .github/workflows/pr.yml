@@ -3,8 +3,8 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: ✍️ Publish development update
-run-name: ✍️ Publish "${{ github.event.pull_request.head.ref }}" development update by ${{ github.actor }}
+name: ✍️ Publish PR development update
+run-name: ✍️ Publish PR ${{ github.event.pull_request.title }} update to Expo branch ${{ github.event.pull_request.head.ref }}
 on: [pull_request]
 jobs:
   pr:

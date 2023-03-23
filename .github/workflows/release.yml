@@ -4,7 +4,7 @@
 #
 #
 name: 🚀 Publish Release to Production
-run-name: 🚀 Publish ${{ github.event.release.name }} to Production by ${{ github.actor }}
+run-name: 🚀 Publish ${{ github.event.release.name }} to Production
 on:
   release:
     types: [published]
