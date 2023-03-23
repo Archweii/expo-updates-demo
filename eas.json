@@ -2,8 +2,7 @@
   "cli": {
     "version": ">= 2.1.0",
     "requireCommit": true,
-    "appVersionSource": "remote",
-    "autoIncrement": true
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
