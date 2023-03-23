@@ -8,9 +8,18 @@ on:
   workflow_dispatch:
     inputs:
       build-type:
-        description: Vilken version av appen ska byggas?
+        description: What version of the app shoul be built?
         type: environment
         required: true
+
+      platform:
+        type: choice
+        required: true
+        description: For what OS?
+        options: 
+          - All
+          - Android
+          - iOS
 
 jobs:
   build:
@@ -26,6 +35,21 @@ jobs:
         if: github.event.inputs.build-type == 'Development'
         run: |
           echo "BUILD_TYPE=production" >> $GITHUB_ENV
+
+      - name: 📱 Set platform to All
+        if: github.event.inputs.platform == 'All'
+        run: |
+          echo "PLATFORM=all" >> $GITHUB_ENV
+
+      - name: 📱 Set platform to Android
+        if: github.event.inputs.platform == 'Android'
+        run: |
+          echo "PLATFORM=android" >> $GITHUB_ENV
+
+      - name: 📱 Set platform to iOS
+        if: github.event.inputs.platform == 'iOS'
+        run: |
+          echo "PLATFORM=ios" >> $GITHUB_ENV
 
       - name: 💩 Dump GitHub context
         env:
@@ -57,4 +81,4 @@ jobs:
 
       - name: 🚀 Create update
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas build --non-interactive --profile $BUILD_TYPE --platform all
+        run: eas build --non-interactive --profile $BUILD_TYPE --platform $PLATFORM
