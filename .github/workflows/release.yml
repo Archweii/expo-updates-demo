@@ -23,7 +23,7 @@ jobs:
       - name: 🏗 Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
           cache: yarn
 
       - name: 🏗 Enable corepack
@@ -40,8 +40,6 @@ jobs:
       - name: 📦 Install dependencies
         run: yarn install
 
-      - name: 🚀 Create preview
-        uses: expo/expo-github-action/preview@v8
-        with:
-          command: |
-            eas update --branch ${{ github.event.release.target_commitish }} --message "${{ github.event.release.name }}"
+      - name: 🚀 Create update
+        # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
+        run: eas update --non-interactive --profile production --message "${{ github.event.release.name }}"
