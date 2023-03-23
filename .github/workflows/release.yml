@@ -3,8 +3,8 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 🚀 Publish Release to Production
-run-name: 🚀 Publish ${{ github.event.release.name }} to Production
+name: 🚀 Release to Production
+run-name: 🚀 Release ${{ github.event.release.name }} to Production
 on:
   release:
     types: [published]
