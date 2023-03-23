@@ -9,6 +9,8 @@ jobs:
   preview:
     name: EAS Preview
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write # Allow comments on PRs
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
