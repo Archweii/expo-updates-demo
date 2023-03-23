@@ -4,7 +4,7 @@
 #
 #
 name: ✍️ Publish PR development update
-run-name: ✍️ Publish PR '${{ github.event.pull_request.title }}'' update to Expo branch '${{ github.event.pull_request.head.ref }}'
+run-name: ✍️ Publish PR '${{ github.event.pull_request.title }}' update to Expo branch '${{ github.event.pull_request.head.ref }}'
 on: [pull_request]
 
 permissions:

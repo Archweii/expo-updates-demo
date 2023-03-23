@@ -5,15 +5,14 @@ import styled from 'styled-components';
 export default function App() {
   return (
     <View style={styles.container}>
-      <ScText>V2.0.0</ScText>
+      <ScText>V1.0.0</ScText>
       <StatusBar style="auto" />
     </View>
   );
 }
 
 const ScText = styled(Text)`
-  font-size: 64px;
-  font-weight: bold;
+  font-size: 32px;
 `
 
 const styles = StyleSheet.create({
