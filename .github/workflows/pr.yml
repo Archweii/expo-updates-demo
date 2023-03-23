@@ -4,7 +4,7 @@
 #
 #
 name: ✍️ Publish development update
-run-name: ✍️ Publish "${{ github.base_ref }}" development update by ${{ github.actor }}
+run-name: ✍️ Publish "${{ github.event.pull_request.head.ref }}" development update by ${{ github.actor }}
 on: [pull_request]
 jobs:
   pr:
@@ -38,4 +38,4 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         with:
           # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#push
-          command: eas update --branch ${{ github.base_ref }} --message "${{ github.event.head_commit.message }}"
+          command: eas update --branch ${{ github.event.pull_request.head.ref }} --message "${{ github.event.head_commit.message }}"
