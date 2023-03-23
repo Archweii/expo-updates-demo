@@ -38,4 +38,4 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         with:
           # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#push
-          command: eas update --branch ${{ github.event.head.ref }} --message "${{ github.event.pull_request.title }}" 
+          command: eas update --branch ${{ github.event.pull_request.head.ref }} --message "${{ github.event.pull_request.title }}" 
