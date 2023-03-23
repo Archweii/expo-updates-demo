@@ -56,6 +56,5 @@ jobs:
         run: yarn install
 
       - name: 🚀 Create update
-        env:
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
         run: eas build --non-interactive --profile {{ github.event.inputs.build-type }} --platform all
