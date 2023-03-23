@@ -3,7 +3,7 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 🚀 Build Android & iOS
+name: 🚀 Build Android / iOS
 on:
   workflow_dispatch:
     inputs:
