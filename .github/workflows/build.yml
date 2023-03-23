@@ -4,6 +4,7 @@
 #
 #
 name: 🚀 Build Android / iOS
+run-name: 🚀 ${{ inputs.build-type }} build for ${{ inputs.platform }} @${{ github.actor }}
 on:
   workflow_dispatch:
     inputs:
