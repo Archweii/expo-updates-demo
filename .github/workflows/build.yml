@@ -3,17 +3,31 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 🚀 Publish Release to Production
+name: 🚀 Build Android & iOS
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      build-type:
+        description: Vilken version av appen ska byggas?
+        type: environment
+        required: true
 
 jobs:
-  release:
-    name: EAS Update
+  build:
+    name: 🏗 EAS Build
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
+      - name: 🏗 Set type to Production build
+        if: github.event.inputs.build-type == 'Production'
+        run: |
+          echo "BUILD_TYPE=production" >> $GITHUB_ENV
+
+      - name: 🏗 Set type to Development build
+        if: github.event.inputs.build-type == 'Development'
+        run: |
+          echo "BUILD_TYPE=production" >> $GITHUB_ENV
+
+      - name: 💩 Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
@@ -43,4 +57,4 @@ jobs:
 
       - name: 🚀 Create update
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas update --non-interactive --branch main --message "${{ github.event.release.name }}"
+        run: eas build --non-interactive --profile production --platform all
