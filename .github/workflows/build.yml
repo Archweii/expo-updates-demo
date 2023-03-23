@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       build-type:
-        description: What version of the app shoul be built?
+        description: What version of the app should be built?
         type: environment
         required: true
 
