@@ -42,4 +42,4 @@ jobs:
 
       - name: 🚀 Create update
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas update --non-interactive --profile production --message "${{ github.event.release.name }}"
+        run: eas update --non-interactive --branch main --message "${{ github.event.release.name }}"
