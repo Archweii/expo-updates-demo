@@ -12,7 +12,8 @@ export default function App() {
 }
 
 const ScText = styled(Text)`
-  font-size: 24px;
+  font-size: 64px;
+  font-weight: bold;
 `
 
 const styles = StyleSheet.create({
