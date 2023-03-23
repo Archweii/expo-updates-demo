@@ -3,14 +3,7 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-# Only trigger if app files change
-on:
-  pull_request:
-    paths:
-      - 'package.json'
-      - 'app.json'
-      - '**/*.js'
-      - '**/*.ts'
+on: [pull_request]
 
 jobs:
   preview:
@@ -41,6 +34,7 @@ jobs:
         run: yarn install
 
       - name: 🚀 Create preview
+        id: preview
         uses: expo/expo-github-action/preview@v8
         with:
           # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#push
