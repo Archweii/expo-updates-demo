@@ -44,6 +44,4 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         with:
           command: |
-            echo {{ github.release }}
-            echo {{ github.release.target_commitish }}
-            eas update --branch ${{ github.base_ref }} --message "${{ github.release.name }}"
+            eas update --branch ${{ github.event.release.target_commitish }} --message "${{ github.event.release.name }}"
