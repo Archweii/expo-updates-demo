@@ -6,6 +6,9 @@
 name: ✍️ Publish PR development update
 run-name: ✍️ Publish PR '${{ github.event.pull_request.title }}'' update to Expo branch '${{ github.event.pull_request.head.ref }}'
 on: [pull_request]
+permissions:
+  pull-requests: write # Allow posting the QR code for development app.
+
 jobs:
   pr:
     name: 🏗 EAS Update
