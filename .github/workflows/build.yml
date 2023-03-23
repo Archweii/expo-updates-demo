@@ -56,5 +56,7 @@ jobs:
         run: yarn install
 
       - name: 🚀 Create update
+        env:
+          EAS_BUILD_AUTOCOMMIT: 1
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas build --non-interactive --profile production --platform all
+        run: eas build --non-interactive --profile {{ github.event.inputs.build-type }} --platform all
