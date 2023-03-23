@@ -4,7 +4,7 @@
 #
 #
 name: ✍️ Publish development update
-run-name: ✍️ Publish development update - @${{ github.base_ref }} by ${{ github.actor }}
+run-name: ✍️ Publish "${{ github.base_ref }}" development update by ${{ github.actor }}
 on: [pull_request]
 jobs:
   pr:
