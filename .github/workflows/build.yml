@@ -40,7 +40,7 @@ jobs:
 
       - name: 💩 Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ toJson(GITHUB_ENV) }}
+          GITHUB_CONTEXT: ${{ toJson($GITHUB_ENV) }}
         run: echo "$GITHUB_CONTEXT"
 
       - name: 🏗 Setup repo
