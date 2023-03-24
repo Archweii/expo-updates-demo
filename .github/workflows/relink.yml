@@ -54,6 +54,9 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: 📦 Install dependencies
+        run: yarn install
+
       - name: 🚀 Relink EAS Channel to new EAS Branch
         run: eas channel:edit $EAS_CHANNEL --non-interactive --branch ${{ github.event.release.name }}
 
