@@ -66,4 +66,4 @@ jobs:
 
       - name: 🚀 Create update
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas build --non-interactive --profile $EAS_BUILD_PROFILE --platform $EAS_BUILD_PLATFORM
+        run: eas build --non-interactive --profile ${{ env.EAS_BUILD_PROFILE }} --platform ${{ env.EAS_BUILD_PLATFORM }}

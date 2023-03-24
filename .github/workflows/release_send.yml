@@ -13,10 +13,6 @@ jobs:
     name: EAS Update
     runs-on: ubuntu-latest
     steps:
-      - name: 🏗 Select EAS Channel from GitHub Environment
-        run: |
-          echo ${{ inputs.eas-channel }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_CHANNEL=${var}"; } >>${GITHUB_ENV}
-
       # This will automatically check-out to the ref/commit/release that triggered the event
       # In this case been the release & tag for it.
       - name: 🏗 Setup repo
