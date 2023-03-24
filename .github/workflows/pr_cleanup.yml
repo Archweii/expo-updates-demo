@@ -1,0 +1,44 @@
+# https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#release
+#
+# Creates an Expo Update with Expo branch named as the Git branch for clarity
+#
+#
+name: 🤖 🧹 Cleaning up EAS
+run-name: 🤖 🧹Cleaning up EAS
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  pr:
+    name: 🏗 EAS Update
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: yarn
+
+      - name: 🏗 Enable corepack
+        run: |
+          corepack enable
+          yarn -v
+
+      - name: 🏗 Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: yarn install
+
+      - name: 🧹 Clean up EAS Branch
+        run: eas branch:delete ${{ github.event.pull_request.head.ref }}
+
+      - name: 🧹 Clean up EAS Channel
+        run: eas channel:delete ${{ github.event.pull_request.head.ref }} --non-interactive
