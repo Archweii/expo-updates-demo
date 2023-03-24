@@ -3,8 +3,8 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 🤖 🧹 Cleaning up EAS
-run-name: 🤖 🧹Cleaning up EAS
+name: 🤖 🧹 Cleaning up EAS from PR changes
+run-name: 🤖 🧹Cleaning up EAS from PR '${{ github.event.pull_request.head.ref }}' changes
 on:
   pull_request:
     types: [closed]
