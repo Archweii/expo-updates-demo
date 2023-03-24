@@ -32,16 +32,14 @@ jobs:
         run: |
           echo ${{ inputs.build-type }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_BUILD_PROFILE=${var}"; } >>${GITHUB_ENV}
 
-
       - name: 📱 Set platform
         run: |
           echo ${{ inputs.platform }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_BUILD_PLATFORM=${var}"; } >>${GITHUB_ENV}
 
-
-      - name: 💩 Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      # - name: 💩 Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
 
       - name: 🏗 Setup repo
         uses: actions/checkout@v3

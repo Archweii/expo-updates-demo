@@ -18,11 +18,6 @@ jobs:
         run: |
           echo ${{ inputs.eas-channel }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_CHANNEL=${var}"; } >>${GITHUB_ENV}
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
       # This will automatically check-out to the ref/commit/release that triggered the event
       # In this case been the release & tag for it.
       - name: 🏗 Setup repo
