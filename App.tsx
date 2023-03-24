@@ -18,7 +18,7 @@ const ScText = styled(Text)`
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'purple',
+    backgroundColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: 24
