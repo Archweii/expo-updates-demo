@@ -42,6 +42,7 @@ jobs:
 
       - name: 📦 Install dependencies
         run: yarn install
+        
 
       - name: 📦 Send release to EAS
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
