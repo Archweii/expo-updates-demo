@@ -2,7 +2,6 @@
 #
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
-#
 name: 🤖 📦 Send release
 run-name: 🤖 📦 Send release '${{ github.event.release.name }}' to EAS Branch '${{ github.ref_name }}'
 on:
