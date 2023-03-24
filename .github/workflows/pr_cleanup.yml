@@ -38,7 +38,7 @@ jobs:
         run: yarn install
 
       - name: 🧹 Clean up EAS Branch
-        run: eas branch:delete ${{ github.event.pull_request.head.ref }}
+        run: eas branch:delete ${{ github.event.pull_request.head.ref }} --non-interactive
 
       - name: 🧹 Clean up EAS Channel
         run: eas channel:delete ${{ github.event.pull_request.head.ref }} --non-interactive
