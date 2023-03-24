@@ -9,13 +9,13 @@
       "developmentClient": true,
       "distribution": "internal"
     },
-    "preview": {
-      "distribution": "internal",
-      "channel": "preview"
-    },
     "production": {
-      "channel": "main",
+      "channel": "production",
       "autoIncrement": true
+    },
+    "staging": {
+      "channel": "staging",
+      "autoIncrement": false
     }
   },
   "submit": {

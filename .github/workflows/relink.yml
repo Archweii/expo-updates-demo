@@ -3,11 +3,22 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 📦 Send release
-run-name: 📦 Send release '${{ github.event.release.name }}' to EAS Branch '${{ github.ref_name }}'
+name: 🚀 Publish new release.
+run-name: 🚀 Send new Release '${{ github.event.release.name }}' to EAS branch '${{ EAS_CHANNEL }}'
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      # This will publish an EAS Update to a EAS Branch named after the release name & Relink the EAS Channel selected to to this EAS Branch.
+      # The build profiles are named the same as the channel they are linked to for convenience and simplicity.
+      eas-channel:
+        description: What Channel should receive the update?
+        type: environment
+        required: true
+
+      # The release workflow creates a new branch named exactly as the tag so this must match.
+      eas-branch:
+        description: What release tag should be published? (It must be the exact name)
+        required: true
 
 jobs:
   release:
@@ -23,8 +34,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      # This will automatically check-out to the ref/commit/release that triggered the event
-      # In this case been the release & tag for it.
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
 
@@ -45,9 +54,6 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
-      - name: 📦 Install dependencies
-        run: yarn install
+      - name: 🚀 Relink EAS Channel to new EAS Branch
+        run: eas channel:edit $EAS_CHANNEL --non-interactive --branch ${{ github.event.release.name }}
 
-      - name: 📦 Send release to EAS
-        # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas update --non-interactive --branch ${{ github.ref_name }} --message "${{ github.event.release.name }}"

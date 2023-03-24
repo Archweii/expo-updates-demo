@@ -8,8 +8,9 @@ run-name: 🚀 ${{ inputs.build-type }} build for ${{ inputs.platform }}
 on:
   workflow_dispatch:
     inputs:
+      # The build profiles are named the same as the channel they are linked to for convenience and simplicity.
       build-type:
-        description: What version of the app should be built?
+        description: What type should be build?
         type: environment
         required: true
 
@@ -27,35 +28,18 @@ jobs:
     name: 🏗 EAS Build
     runs-on: ubuntu-latest
     steps:
-      - name: 🏗 Set type to Production build
-        if: github.event.inputs.build-type == 'Production'
+      - name: 🏗 Select EAS Build Profile from GitHub Environment
         run: |
-          echo "BUILD_TYPE=production" >> $GITHUB_ENV
+          echo "EAS_BUILD_PROFILE=${inputs.build-type,,}" >>${GITHUB_ENV}
 
-      - name: 🏗 Set type to Development build
-        if: github.event.inputs.build-type == 'Development'
+      - name: 📱 Set platform
         run: |
-          echo "BUILD_TYPE=production" >> $GITHUB_ENV
+          echo "EAS_BUILD_PLATFORM=${inputs.platform,,}" >>${GITHUB_ENV}
 
-      - name: 📱 Set platform to All
-        if: github.event.inputs.platform == 'All'
-        run: |
-          echo "PLATFORM=all" >> $GITHUB_ENV
-
-      - name: 📱 Set platform to Android
-        if: github.event.inputs.platform == 'Android'
-        run: |
-          echo "PLATFORM=android" >> $GITHUB_ENV
-
-      - name: 📱 Set platform to iOS
-        if: github.event.inputs.platform == 'iOS'
-        run: |
-          echo "PLATFORM=ios" >> $GITHUB_ENV
-
-      - name: 💩 Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+      # - name: 💩 Dump GitHub context
+      #   env:
+      #     GITHUB_CONTEXT: ${{ toJson(github) }}
+      #   run: echo "$GITHUB_CONTEXT"
 
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
@@ -82,4 +66,4 @@ jobs:
 
       - name: 🚀 Create update
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
-        run: eas build --non-interactive --profile $BUILD_TYPE --platform $PLATFORM
+        run: eas build --non-interactive --profile $EAS_BUILD_PROFILE --platform $EAS_BUILD_PLATFORM
