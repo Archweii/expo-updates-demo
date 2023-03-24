@@ -40,6 +40,9 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
+      - name: 📦 Install dependencies
+        run: yarn install
+
       - name: 📦 Send release to EAS
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
         run: eas update --non-interactive --branch ${{ github.ref_name }} --message "${{ github.event.release.name }}"
