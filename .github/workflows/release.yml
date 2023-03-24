@@ -43,3 +43,8 @@ jobs:
       - name: 📦 Send release to EAS
         # https://docs.github.com/en/github-ae@latest/webhooks-and-events/webhooks/webhook-events-and-payloads#release
         run: eas update --non-interactive --branch ${{ github.ref_name }} --message "${{ github.event.release.name }}"
+
+      - name: 🗑️ Remove autocreated EAS Channel
+        # No idea why EAS is autocreating a EAS Bhannel with the EAS Branch name, just remove the EAs Channel as another one like 
+        #   staging / production will eventuelly possibly linked to the branch later.
+        run: eas channel:delete ${{ github.ref_name }} --non-interactive
