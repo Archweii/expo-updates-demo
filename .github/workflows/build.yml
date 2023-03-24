@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: 🏗 Select EAS Build Profile from GitHub Environment
         run: |
-          echo ${{ $inputs.build-type }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_BUILD_PROFILE=${var}"; } >>${GITHUB_ENV}
+          echo ${{ inputs.build-type }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_BUILD_PROFILE=${var}"; } >>${GITHUB_ENV}
 
 
       - name: 📱 Set platform
