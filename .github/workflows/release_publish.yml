@@ -4,7 +4,7 @@
 #
 #
 name: 🚀 Publish new release.
-run-name: 🚀 Send new Release '${{ github.event.release.name }}' to EAS Branch '${{ inputs.eas-channel }}'
+run-name: 🚀 Publish new Release '${{ inputs.eas-branch }}' to EAS Branch '${{ inputs.eas-channel }}'
 on:
   workflow_dispatch:
     inputs:
