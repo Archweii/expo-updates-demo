@@ -27,7 +27,7 @@ jobs:
     steps:
       - name: 🏗 Select EAS Channel from GitHub Environment
         run: |
-          echo "EAS_CHANNEL=${inputs.eas-channel,,}" >>${GITHUB_ENV}
+          echo $inputs.eas-channel | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_CHANNEL=${var}"; } >>${GITHUB_ENV}
 
       - name: Dump GitHub context
         env:
