@@ -58,5 +58,5 @@ jobs:
         run: yarn install
 
       - name: 🚀 Relink EAS Channel to new EAS Branch
-        run: eas channel:edit ${{ env.EAS_CHANNEL }} --non-interactive --branch ${{ github.event.release.name }}
+        run: eas channel:edit ${{ env.EAS_CHANNEL }} --non-interactive --branch ${{ inputs.eas-branch }}
 
