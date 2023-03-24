@@ -3,8 +3,8 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 🚀 Publish new release.
-run-name: 🚀 Publish new Release '${{ inputs.eas-branch }}' to EAS Branch '${{ inputs.eas-channel }}'
+name: 🚀 Point release branch.
+run-name: 🚀 Point Release branch '${{ inputs.eas-branch }}' to EAS Channel '${{ inputs.eas-channel }}'
 on:
   workflow_dispatch:
     inputs:
