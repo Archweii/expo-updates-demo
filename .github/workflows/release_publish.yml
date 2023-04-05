@@ -3,8 +3,8 @@
 # Creates an Expo Update with Expo branch named as the Git branch for clarity
 #
 #
-name: 🚀 Publish release
-run-name: 🚀 Publish release EAS Branch '${{ inputs.eas-branch }}' to EAS Channel '${{ inputs.eas-channel }}'
+name: 🚀 Publish OTA release
+run-name: 🚀 Publish OTA release '${{ inputs.eas-branch }}' to EAS Channel '${{ inputs.eas-channel }}'
 on:
   workflow_dispatch:
     inputs:
@@ -13,11 +13,6 @@ on:
       eas-channel:
         description: What Channel should receive the update?
         type: environment
-        required: true
-
-      # The release workflow creates a new branch named exactly as the tag so this must match.
-      eas-branch:
-        description: What release tag should be published? (It must be the exact name)
         required: true
 
 jobs:

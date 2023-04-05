@@ -10,7 +10,7 @@ on:
     inputs:
       # The build profiles are named the same as the channel they are linked to for convenience and simplicity.
       build-type:
-        description: What type should be build?
+        description: For what EAS Channel should it build?
         type: environment
         required: true
 
@@ -35,11 +35,6 @@ jobs:
       - name: 📱 Set platform
         run: |
           echo ${{ inputs.platform }} | tr '[:upper:]' '[:lower:]' | { var=$(cat); echo "EAS_BUILD_PLATFORM=${var}"; } >>${GITHUB_ENV}
-
-      # - name: 💩 Dump GitHub context
-      #   env:
-      #     GITHUB_CONTEXT: ${{ toJson(github) }}
-      #   run: echo "$GITHUB_CONTEXT"
 
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
