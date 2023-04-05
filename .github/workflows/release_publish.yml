@@ -4,7 +4,7 @@
 #
 #
 name: 🚀 Publish OTA release
-run-name: 🚀 Publish OTA release '${{ inputs.eas-branch }}' to EAS Channel '${{ inputs.eas-channel }}'
+run-name: 🚀 Publish OTA release '${{ github.ref_name }}' to EAS Channel '${{ inputs.eas-channel }}'
 on:
   workflow_dispatch:
     inputs:
@@ -53,5 +53,5 @@ jobs:
         run: yarn install
 
       - name: 🚀 Relink EAS Channel to new EAS Branch
-        run: eas channel:edit ${{ env.EAS_CHANNEL }} --non-interactive --branch ${{ inputs.eas-branch }}
+        run: eas channel:edit ${{ env.EAS_CHANNEL }} --non-interactive --branch ${{ github.ref_name }}
 
