@@ -11,7 +11,7 @@ on:
       # This will publish an EAS Update to a EAS Branch named after the release name & Relink the EAS Channel selected to to this EAS Branch.
       # The build profiles are named the same as the channel they are linked to for convenience and simplicity.
       eas-channel:
-        description: What Channel should receive the release?
+        description: What EAS Channel should receive the release?
         type: environment
         required: true
 
